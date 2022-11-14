@@ -24,6 +24,8 @@ h. Find a month for each year in which maximum number of quantities were sold
 Answr down
 
 
+I have transferred csv file using filezilla to cloudera
+
 local location
 /tmp/hive_class/sales_order_data.csv
 
