@@ -146,7 +146,13 @@ select sum(sales) as total_sales,qtr_id from sales_order_data_orc group by qtr_i
 
 
 
-e. In which country sales was maximum and in which country sales was minimum
+e. In which country sales was maximum and in which country sales was 
+
+select country, max(sales) as max_min from sales_order_orc group by country order by max_min
+desc limit 1
+union all
+select country,min(sales) as max_min from sales_order_orc group by country order by max_min asc
+limit 1;
 
 
 f. Calculate quartelry sales for each city
