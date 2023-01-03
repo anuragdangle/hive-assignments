@@ -1,0 +1,14 @@
+Hive operation with python
+
+
+Create a python application that connects to the Hive database for extracting data, 
+creating sub tables for data processing, 
+drops temporary tables.
+fetch rows to python itself into a list of tuples and mimic the join or filter operations
+
+
+
+Solution: Please find ipynb file attached
+
+
+We will use PyHive here

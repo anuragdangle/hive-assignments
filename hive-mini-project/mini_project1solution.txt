@@ -1,17 +1,75 @@
 1. Create a schema based on the given dataset
+
+Hive> Create table AgentLogingReport
+(
+sr_no int,
+Agent string,
+Date date,
+Login string,
+Logout string,
+Duration string
+)
+row format delimited
+fields terminated by ','
+tblproperties ("skip.header.line.count" = "1");
+
+
+Hive> Create table AgentPerformance
+(
+sr_no int,
+Date date,
+Agent_Name string,
+Total_charts int,
+Avg_Response_Time string,
+Avg_Resolution_Time string,
+Avg_Rating float,
+Total_Feedback int
+)
+row format delimited
+fields terminated by ','
+tblproperties ("skip.header.line.count" = "1");
+
+
+
 2. Dump the data inside the hdfs in the given schema location.
-3. List of all agents' names. 
+load data local inpath '/home/cloudera/AgentLogingReport.csv' into table AgentLogingReport;
+
+load data local inpath '/home/cloudera/AgentPerformance.csv' into table AgentPerformance;
+
+3. List of all agents' names.
+select distinct Agent from AgentLogingReport;
+ 
 4. Find out agent average rating.
+select Agent_name,avg(Avg_Rating) from AgentPerformance group by Agent_name;
+
 5. Total working days for each agents 
+select Agent,count(distinct Date) from AgentLogingReport group by Agent;
+
 6. Total query that each agent have taken 
+select Agent_name,sum(total_chats) from AgentPerformance group by Agent_name;
+
 7. Total Feedback that each agent have received 
+select Agent_name,sum(Total_Feedback) from AgentPerformance group by Agent_name;
+
 8. Agent name who have average rating between 3.5 to 4 
+select Agent_name,Avg_Rating from AgentPerformance where Avg_Rating between 3.5 and 4;
+
 9. Agent name who have rating less than 3.5 
+select Agent_name,Avg_Rating from AgentPerformance where Avg_Rating<3.5;
+
 10. Agent name who have rating more than 4.5 
+select Agent_name,Avg_Rating from AgentPerformance where Avg_Rating > 4.5;
+
 11. How many feedback agents have received more than 4.5 average
+
 12. average weekly response time for each agent 
+
 13. average weekly resolution time for each agents 
+
 14. Find the number of chat on which they have received a feedback 
+
 15. Total contribution hour for each and every agents weekly basis 
+
 16. Perform inner join, left join and right join based on the agent column and after joining the table export that data into your local system.
+
 17. Perform partitioning on top of the agent column and then on top of that perform bucketing for each partitioning.
