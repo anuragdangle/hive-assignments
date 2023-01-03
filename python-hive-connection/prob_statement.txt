@@ -9,6 +9,7 @@ fetch rows to python itself into a list of tuples and mimic the join or filter o
 
 
 Solution: Please find ipynb file attached
+python_hive_connection.ipynb
 
 
 We will use PyHive here
