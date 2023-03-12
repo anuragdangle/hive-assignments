@@ -61,8 +61,10 @@ select Agent_name,Avg_Rating from AgentPerformance where Avg_Rating<3.5;
 select Agent_name,Avg_Rating from AgentPerformance where Avg_Rating > 4.5;
 
 11. How many feedback agents have received more than 4.5 average
+select Agent_name,avg(Total_Feedback) from AgentPerformance having avg(Total_Feedback) > 4.5
 
 12. average weekly response time for each agent 
+
 
 13. average weekly resolution time for each agents 
 
